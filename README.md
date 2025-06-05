@@ -1,54 +1,74 @@
-# ☕️ Coffee Scale Timer
+# ☕ BrewScale
 
-A minimal yet powerful open-source coffee brewing scale and timer — built using an Arduino Nano, OLED display, and a load cell. Designed to be responsive, intuitive, and reliable for pour-over brewing and other precise coffee-making methods.
-
----
-
-## ✨ Features
-
-- **Real-Time Weight Display**: Accurate to 0.1g under 100g, rounded to whole grams above.
-- **Brewing Timer**: Start/stop/reset the timer with a single button.
-- **Negative Weight Support**: Clearly shows negative values with a fixed-position minus sign.
-- **Single Button Interface**:
-  - Short press: start → pause → reset the timer.
-  - Long press: tare the scale.
-- **OLED Display**: Clean, legible layout on a 128x64 screen using [U8g2 library](https://github.com/olikraus/u8g2).
+> A minimalist open-source coffee scale and timer using Arduino, HX711, and a 128×64 OLED display.
 
 ---
 
-## 🛠️ Hardware
+## 🚀 Features
 
-| Component         | Description                                      |
-|------------------|--------------------------------------------------|
-| Arduino Nano      | Or compatible microcontroller                    |
-| HX711             | 24-bit ADC for load cell readings                |
-| Load Cell         | 5kg recommended (others can work with tweaks)    |
-| SSD1306 OLED      | 128x64 display (I²C)                             |
-| Tactile Button    | For input (with pull-up enabled)                 |
-| Power             | USB or external 5V                               |
-
----
-
-## 🧠 How It Works
-
-- Reads mass from the HX711 and load cell
-- Filters and calibrates readings before display.
-- Uses a finite state machine for timer control (`HIDDEN`, `RUNNING`, `PAUSED`).
-- The OLED UI displays icons, a dynamic timer, and live mass with proper formatting for limited screen space.
+| Feature                        | Description                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| 📏 Mass Measurement           | Reads weight in grams with relative taring at startup                       |
+| ⏱️ Timer Logic                | Single-button interface for Start / Pause / Reset                           |
+| 🎯 Precision Display          | 1 decimal below 100g, no decimal at 100g or more                            |
+| ➖ Negative Weight Handling    | Shows a clean negative sign offset to the left when weight is negative     |
+| 🔘 Long Press Tare            | Hold button for 1s to tare without affecting timer                          |
+| 🧠 Smart UI                   | Timer and clock icon are hidden when inactive                               |
+| 🧩 Modular Codebase           | Clean, well-commented, and easy to adapt                                    |
 
 ---
 
-## 🚀 Getting Started
+## 🔧 Hardware
 
-### 📦 Dependencies
+| Component                     | Notes                                               |
+|------------------------------|-----------------------------------------------------|
+| Arduino Nano (or compatible) | Brain of the operation                              |
+| HX711                        | Amplifies the load cell signal                     |
+| Load Cell (5kg recommended)  | Measures weight                                     |
+| SSD1306 OLED (128×64, I²C)   | Displays mass and timer                             |
+| Push Button                  | Controls timer and taring                           |
+| Jumper Wires + Breadboard    | For prototyping                                     |
 
-Install the following libraries via Arduino Library Manager:
+### 🛠️ Load Cell Mounting Hardware
 
-- [`HX711`](https://github.com/bogde/HX711)
-- [`U8g2`](https://github.com/olikraus/u8g2)
+| Part                        | Quantity |
+|----------------------------|----------|
+| M4 socket head cap screws  | 2        |
+| M5 socket head cap screws  | 2        |
 
-### 🧪 Calibration
+---
 
-Update the calibration factor in the code:
-```cpp
-massGrams = (raw - tareOffset) / 420.0;  // Adjust this to your load cell
+## 📦 Libraries Used
+
+- [`HX711`](https://github.com/bogde/HX711) — Load cell amplifier interface  
+- [`U8g2`](https://github.com/olikraus/u8g2) — Graphics library for OLED displays
+
+---
+
+## 📋 How to Use
+
+1. 🔌 Wire up the hardware according to your Arduino pin definitions  
+2. 📥 Flash the Arduino sketch using the Arduino IDE  
+3. ⚖️ On startup, the scale automatically tares  
+4. 🔘 Use the button to:
+   - Short press: Start → Pause → Reset & hide timer
+   - Long press (1s+): Tare the scale
+
+---
+
+## 🧪 Example Behaviors
+
+- Mass below 100g shows: `  23.5 g`  
+- Mass at 100g or more: ` 123 g`  
+- Mass below 0: shows a negative sign aligned left → `- 12.3 g`
+
+---
+
+## 📜 License
+
+MIT License — Free to use, modify, and distribute.
+
+---
+
+### ☕ Built for precision. Designed for simplicity. Brew better.
+
