@@ -1,4 +1,4 @@
-# ☕ BrewScale
+# ☕ Coffee-Scale-Timer
 
 > A minimalist open-source coffee scale and timer using Arduino, HX711, and a 128×64 OLED display.
 
