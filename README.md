@@ -64,6 +64,13 @@
 
 ---
 
+## 🧱 3D Model
+
+You can find the printable enclosure and mounting parts for this project on **MakerWorld**:  
+🔗 [Coffee Scale Timer Model on MakerWorld](https://makerworld.com/en/models/1490847)
+
+---
+
 ## 📜 License
 
 MIT License — Free to use, modify, and distribute.
@@ -71,4 +78,3 @@ MIT License — Free to use, modify, and distribute.
 ---
 
 ### ☕ Built for precision. Designed for simplicity. Brew better.
-
